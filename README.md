@@ -16,7 +16,7 @@ Or via CLI:
 dotnet add package GuiDispatcher.Sharp
 ```
 
-Versioning follows CI run numbers (`1.0.{run}`) on pushes to `main`.
+Versioning follows [Semantic Versioning](https://semver.org/). Releases are cut by pushing a `vX.Y.Z` git tag; see [CHANGELOG.md](CHANGELOG.md) for release history.
 
 ## NuGet publishing
 
@@ -30,6 +30,15 @@ Configure a trusted publishing policy on nuget.org:
 | Repository | `GuiDispatcher.Sharp` |
 | Workflow file | `publish-nuget.yml` |
 | Environment | `production` |
+
+### Releasing
+
+The `Publish NuGet` workflow only runs on `vX.Y.Z` tag pushes, and will fail unless the `.csproj` version and `CHANGELOG.md` are both updated first. To cut a release:
+
+1. Bump `<Version>` in `GuiDispatcher.Sharp.csproj`.
+2. Move the relevant `[Unreleased]` entries in `CHANGELOG.md` into a new `## [X.Y.Z] - YYYY-MM-DD` section.
+3. Commit both changes.
+4. Tag and push: `git tag vX.Y.Z && git push origin vX.Y.Z` — this triggers the publish workflow.
 
 ## Contracts
 
