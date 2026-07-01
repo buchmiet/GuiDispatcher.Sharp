@@ -2,8 +2,8 @@ name: Publish NuGet
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'v*.*.*'
 
 jobs:
   publish:
@@ -13,12 +13,29 @@ jobs:
       contents: read
       id-token: write
 
-    env:
-      PACKAGE_VERSION: 1.0.${{ github.run_number }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Determine version from tag
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+
+      - name: Verify csproj version matches tag
+        run: |
+          CSPROJ_VERSION=$(grep -oPm1 '(?<=<Version>)[^<]+' GuiDispatcher.Sharp.csproj)
+          if [ "$CSPROJ_VERSION" != "$VERSION" ]; then
+            echo "::error::Tag version ($VERSION) does not match <Version> in GuiDispatcher.Sharp.csproj ($CSPROJ_VERSION)"
+            exit 1
+          fi
+
+      - name: Verify CHANGELOG.md has an entry for this version
+        run: |
+          if ! grep -qE "^## \[$VERSION\]" CHANGELOG.md; then
+            echo "::error::CHANGELOG.md has no '## [$VERSION]' entry"
+            exit 1
+          fi
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -33,11 +50,11 @@ jobs:
 
       - name: Show package version
         run: |
-          echo "Package version: $PACKAGE_VERSION"
+          echo "Package version: $VERSION"
 
       - name: Pack
         run: |
-          dotnet pack GuiDispatcher.Sharp.csproj --configuration Release --no-build --output ./artifacts /p:PackageVersion=$PACKAGE_VERSION
+          dotnet pack GuiDispatcher.Sharp.csproj --configuration Release --no-build --output ./artifacts /p:PackageVersion=$VERSION
 
       - name: NuGet login
         uses: NuGet/login@v1
