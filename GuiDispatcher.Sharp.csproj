@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>GuiDispatcher.Sharp</RootNamespace>
+
+    <PackageId>GuiDispatcher.Sharp</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Lukasz Buchmiet</Authors>
+    <Description>Small platform-agnostic UI dispatcher and UI timer abstractions.</Description>
+    <PackageTags>dispatcher;ui;gui;thread;timer;avalonia;wpf;winui</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/buchmiet/GuiDispatcher.Sharp</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/buchmiet/GuiDispatcher.Sharp</PackageProjectUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+</Project>
