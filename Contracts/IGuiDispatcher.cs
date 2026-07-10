@@ -1,8 +1,8 @@
-namespace GuiDispatcher.Sharp;
+namespace GuiDispatcher.Sharp.Contracts;
 
 /// <summary>
 /// Marshals work onto a GUI/main thread. Test and headless hosts can use
-/// <see cref="ImmediateGuiDispatcher"/>, which executes work inline.
+/// <see cref="GuiDispatcher.Sharp.ImmediateGuiDispatcher"/>, which executes work inline.
 /// </summary>
 public interface IGuiDispatcher
 {

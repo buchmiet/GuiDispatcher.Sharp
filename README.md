@@ -1,13 +1,13 @@
 # GuiDispatcher.Sharp
 
-Small platform-agnostic UI dispatcher and UI timer abstractions.
+Platform-agnostic GUI dispatcher and timer abstractions for **.NET 10**.
 
 Use this package from view models, services, debouncers, and other code that needs to marshal work back to a GUI/main thread without referencing a UI framework directly.
 
 ## Install
 
 ```xml
-<PackageReference Include="GuiDispatcher.Sharp" Version="1.0.*" />
+<PackageReference Include="GuiDispatcher.Sharp" Version="1.1.*" />
 ```
 
 Or via CLI:
@@ -17,6 +17,10 @@ dotnet add package GuiDispatcher.Sharp
 ```
 
 Versioning follows [Semantic Versioning](https://semver.org/). Releases are cut by pushing a `vX.Y.Z` git tag; see [CHANGELOG.md](CHANGELOG.md) for release history.
+
+## Requirements
+
+- .NET 10 (`net10.0`)
 
 ## NuGet publishing
 
@@ -42,7 +46,11 @@ The `Publish NuGet` workflow only runs on `vX.Y.Z` tag pushes, and will fail unl
 
 ## Contracts
 
+Interfaces are in the `GuiDispatcher.Sharp.Contracts` namespace:
+
 ```csharp
+using GuiDispatcher.Sharp.Contracts;
+
 public interface IGuiDispatcher
 {
     bool CheckAccess();
@@ -62,6 +70,7 @@ public interface IGuiDispatcher
 
 ```csharp
 using GuiDispatcher.Sharp;
+using GuiDispatcher.Sharp.Contracts;
 
 IGuiDispatcher dispatcher = new ImmediateGuiDispatcher();
 
@@ -71,14 +80,14 @@ await dispatcher.InvokeAsync(() =>
 });
 ```
 
-`ImmediateGuiDispatcher` executes posted/invoked work inline. Its timers use `System.Threading.Timer` and dispatch ticks through `Post`, which keeps tests and console hosts deterministic enough without a GUI framework dependency.
+`ImmediateGuiDispatcher` executes posted/invoked work inline. Its timers use `System.Threading.Timer` and marshal ticks through `Post`, which keeps tests and console hosts deterministic enough without a GUI framework dependency.
 
 ## UI implementations
 
 Install a platform adapter package for GUI applications:
 
 ```xml
-<PackageReference Include="GuiDispatcher.Sharp.Avalonia" Version="1.0.*" />
+<PackageReference Include="GuiDispatcher.Sharp.Avalonia" Version="1.1.*" />
 ```
 
 WinUI 3 support is planned separately.
