@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-07-10
+
+### Changed
+
+- Target framework is now `net10.0` (dropped `netstandard2.0`).
+- Public contracts (`IGuiDispatcher`, `IGuiTimer`) live in the `GuiDispatcher.Sharp.Contracts` namespace.
+- `ImmediateGuiDispatcher` timer implementations are `internal`; consumers use `IGuiTimer` via `CreateTimer` and `RunOnce`.
+- Removed `sealed` from public types.
+- Argument validation uses `ArgumentNullException.ThrowIfNull`.
+
+### Added
+
+- Source layout: `Contracts/`, `Timers/`, and `Static/` folders.
+
 ## [1.0.2] - 2026-07-01
 
 ### Changed
