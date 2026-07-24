@@ -8,7 +8,7 @@
     <RootNamespace>GuiDispatcher.Sharp</RootNamespace>
 
     <PackageId>GuiDispatcher.Sharp</PackageId>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <Authors>Lukasz Buchmiet</Authors>
     <Description>Platform-agnostic GUI dispatcher and timer abstractions for .NET 10.</Description>
     <PackageTags>dispatcher;ui;gui;thread;timer;avalonia;winui</PackageTags>
@@ -21,6 +21,13 @@
 
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="tests/**" />
+    <None Remove="tests/**" />
+    <EmbeddedResource Remove="tests/**" />
+    <Content Remove="tests/**" />
   </ItemGroup>
 
 </Project>
