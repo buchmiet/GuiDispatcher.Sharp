@@ -219,4 +219,9 @@ $repositories |
     Where-Object Name -ne 'GuiDispatcher.Sharp' |
     ForEach-Object { Publish-RepositoryTag -Repository $_ -CommandContext $PSCmdlet }
 
-Write-Host "Family release $Version has been submitted."
+if ($WhatIfPreference) {
+    Write-Host "What-if validation completed; no branches or tags were pushed."
+}
+else {
+    Write-Host "Family release $Version has been submitted."
+}
