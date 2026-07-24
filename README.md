@@ -89,11 +89,13 @@ Install the adapter package matching the UI host:
 ```xml
 <PackageReference Include="GuiDispatcher.Sharp.Avalonia" Version="1.1.*" />
 <PackageReference Include="GuiDispatcher.Sharp.Consolonia" Version="1.1.*" />
+<PackageReference Include="GuiDispatcher.Sharp.Maui" Version="1.1.*" />
 <PackageReference Include="GuiDispatcher.Sharp.Wpf" Version="1.1.*" />
 ```
 
 - `GuiDispatcher.Sharp.Avalonia` targets Avalonia 12.
 - `GuiDispatcher.Sharp.Consolonia` targets Consolonia 11 and its Avalonia 11 dispatcher.
+- `GuiDispatcher.Sharp.Maui` targets .NET MAUI 10.
 - `GuiDispatcher.Sharp.Wpf` targets WPF on .NET 10 for Windows.
 
 WinUI 3 support is planned separately.
