@@ -48,6 +48,9 @@ jobs:
       - name: Build
         run: dotnet build GuiDispatcher.Sharp.csproj --configuration Release --no-restore
 
+      - name: Test
+        run: dotnet test tests/GuiDispatcher.Sharp.Tests/GuiDispatcher.Sharp.Tests.csproj --configuration Release --verbosity normal
+
       - name: Show package version
         run: |
           echo "Package version: $VERSION"

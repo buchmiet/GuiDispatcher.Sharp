@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-07-24
+
+### Added
+
+- Tests for immediate dispatch, asynchronous invocation, repeating timers, and one-shot scheduling.
+- Test execution as a required step of the NuGet publishing workflow.
+
+### Changed
+
+- Excluded test sources and assets from the library project and package.
+
 ## [1.1.0] - 2026-07-10
 
 ### Changed
