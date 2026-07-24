@@ -90,7 +90,7 @@ Install the adapter package matching the UI host:
 <PackageReference Include="GuiDispatcher.Sharp.Avalonia" Version="1.1.*" />
 <PackageReference Include="GuiDispatcher.Sharp.Consolonia" Version="1.1.*" />
 <PackageReference Include="GuiDispatcher.Sharp.Maui" Version="1.1.*" />
-<PackageReference Include="GuiDispatcher.Sharp.ProGPU" Version="1.1.1-preview.1" />
+<PackageReference Include="GuiDispatcher.Sharp.ProGPU" Version="1.1.1-preview26" />
 <PackageReference Include="GuiDispatcher.Sharp.Wpf" Version="1.1.*" />
 <PackageReference Include="GuiDispatcher.Sharp.WinUI" Version="1.1.*" />
 ```
@@ -101,3 +101,6 @@ Install the adapter package matching the UI host:
 - `GuiDispatcher.Sharp.ProGPU` targets ProGPU's native WebGPU UI-thread queue.
 - `GuiDispatcher.Sharp.Wpf` targets WPF on .NET 10 for Windows.
 - `GuiDispatcher.Sharp.WinUI` targets WinUI 3 on .NET 10 and Windows App SDK 2.
+
+For a coordinated release of the core package and all adapters, follow
+[RELEASING_FAMILY.md](RELEASING_FAMILY.md).
