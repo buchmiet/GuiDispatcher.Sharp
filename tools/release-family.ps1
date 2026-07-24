@@ -4,7 +4,7 @@ param(
     [ValidatePattern('^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$')]
     [string] $Version,
 
-    [ValidatePattern('^[0-9A-Za-z][0-9A-Za-z.-]*$')]
+    [ValidatePattern('^preview\d+$')]
     [string] $ProGpuSuffix = 'preview26',
 
     [string] $Root = (Join-Path (Split-Path $PSScriptRoot -Parent) '..'),
@@ -161,6 +161,17 @@ $repositories = foreach ($name in $repositoryNames) {
         $expectedRange = "[$Version,2.0.0)"
         if ($null -eq $dependency -or $dependency.Version -ne $expectedRange) {
             throw "$name must depend on GuiDispatcher.Sharp $expectedRange."
+        }
+    }
+
+    if ($name -eq 'GuiDispatcher.Sharp.ProGPU') {
+        $previewNumber = $ProGpuSuffix.Substring('preview'.Length)
+        $proGpuDependency = $project.SelectSingleNode(
+            "/Project/ItemGroup/PackageReference[@Include='ProGPU.WinUI']"
+        )
+        $expectedProGpuRange = "[0.1.0-preview.$previewNumber,0.2.0)"
+        if ($null -eq $proGpuDependency -or $proGpuDependency.Version -ne $expectedProGpuRange) {
+            throw "$name must depend on ProGPU.WinUI $expectedProGpuRange."
         }
     }
 
