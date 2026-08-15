@@ -8,7 +8,7 @@
     <RootNamespace>GuiDispatcher.Sharp</RootNamespace>
 
     <PackageId>GuiDispatcher.Sharp</PackageId>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
     <Authors>Lukasz Buchmiet</Authors>
     <Description>Platform-agnostic GUI dispatcher and timer abstractions for .NET 10.</Description>
     <PackageTags>dispatcher;ui;gui;thread;timer;avalonia;winui</PackageTags>
